@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../public/javascripts/angular/angular.min.js"></script>
+</head>
+<body ng-app="myapp">
+
+<div ng-controller="ctrl">
+    <div menu></div>
+</div>
+
+<div menu></div>
+<!--<div menu></div>-->
+<!--{{data}}-->
+<!--
+指令的出险方式
+1、属性的方式
+2、类名方式
+3、标签的方式
+4、注释的方式
+-->
+</body>
+<script>
+
+    //替换这里用了ajax    1、向服务器发送请求   2、不能跨域
+    angular.module("myapp",[]).directive("menu",function(){
+        return {
+            restrict:"ECMA",
+            templateUrl:"demo1.html",//指定文件地址，文件中直接写内容不能再有根文件
+            transclude:true,//保留原有的内容
+            //replace:true,
+            scope:{
+
+            },
+            link:function($scope,b,c){//指定自己定义的指令上添加scope,自己指令的scope是a
+               $scope.data=[
+                   {
+                       name:"111",
+                       son:[
+                           {name:"1-1"},
+                           {name:"1-2"},
+                           {name:"1-3"},
+                           {name:"1-4"}
+
+                       ]
+                   },
+                   {
+                       name:"222",
+                       son:[
+                           {name:"2-1"},
+                           {name:"2-2"},
+                           {name:"2-3"},
+                           {name:"2-4"}
+
+                       ]
+                   },
+                   {
+                       name:"333",
+                       son:[
+                           {name:"3-1"},
+                           {name:"3-2"},
+                           {name:"3-3"},
+                           {name:"3-4"}
+
+                       ]
+                   }
+
+               ];
+                $scope.a=0;
+                $scope.change=function(id){
+                    $scope.a=id;
+                }
+            }
+        }
+    }).controller("ctrl",function($scope){//显示ajax数据时必须借助控制器才能显示
+        $scope.menu="我是控制器上的值";
+    })
+
+</script>
+</html>

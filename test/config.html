@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="javascripts/angular/angular.min.js"></script>
+<!--
+config().run().controller().filter()
+
+
+
+-->
+</head>
+<body ng-app="myapp">
+    <div ng-controller="ctrl"></div>
+</body>
+<script>
+    angular.module("myapp",[],function(){
+        console.log(1);
+    }).controller("ctrl",function(){
+        console.log("ctrl");
+    }).filter("")
+</script>
+</html>

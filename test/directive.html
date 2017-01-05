@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../public/javascripts/angular/angular.min.js"></script>
+</head>
+<body ng-app="myapp">
+<div ng-controller="ctrl">
+<!--组件  react
+    指令为了做组件
+-->
+    <div abc>
+        abcdef
+    </div>
+
+    <abc></abc>
+
+    <div class="abc"></div>
+</div>
+<!--
+指令的出险方式
+1、属性的方式
+2、类名方式
+3、标签的方式
+4、注释的方式
+-->
+</body>
+<script>
+
+    //替换这里用了ajax    1、向服务器发送请求   2、不能跨域
+    angular.module("myapp",[]).directive("abc",function(){
+        return {
+            restrict:"ECMA",
+            template:"<div>{{abc}}</div>",
+            //templateUrl:"demo.html",//指定文件地址，文件中直接写内容不能再有根文件
+            replace:true,//直接替换，不保留原有内容
+            //transclude:true//保留原有的内容
+            link:function(a,b,c){//指定自己定义的指令上添加scope,自己指令的scope是a
+                a.abc="自己指令的scope";
+                console.log(a);
+                console.log(b);
+                console.log(c);
+            }
+        }
+    }).controller("ctrl",function($scope){//显示ajax数据时必须借助控制器才能显示
+        $scope.abc="我是控制器上的值";
+    })
+</script>
+</html>
