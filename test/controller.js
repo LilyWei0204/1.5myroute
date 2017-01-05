@@ -4,8 +4,8 @@ angular.module("ctrls",["sevices"])
         $scope.data=data.data;
     })
 }]).controller("list",function($scope,$routeParams){
-    //$scope.id=$routeParams.id;
-}).controller("show",function(){
-
+    $scope.id=$routeParams.id;
+}).controller("show",function($scope,$routeParams){
+    $scope.id=$routeParams.id;
 })
 
